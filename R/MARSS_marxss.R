@@ -914,7 +914,7 @@ predict_marxss = function(x, newdata, n.ahead, t.start){
     pred.marxss$fixed$V0=array(vec(kf$V0T), dim=c(marxss.dims$V0[1]*marxss.dims$V0[2],1,1))
   }else{
     pred.marxss$fixed$x0=array(kf$xtT[,t.start-1], dim=marxss.dims$x0)
-    pred.marxss$fixed$V0=array(vec(kf$VtT[,,t=(t.start-1)]), dim=c(marxss.dims$V0[1]*marxss.dims$V0[2],1,1))
+    pred.marxss$fixed$V0=array(vec(as.matrix(kf$VtT[,,t=(t.start-1)])), dim=c(marxss.dims$V0[1]*marxss.dims$V0[2],1,1))
   }
   pred.marxss$free$x0=array(0,dim=c(marxss.dims$x0[1],0,1))
   pred.marxss$free$V0=array(0,dim=c(marxss.dims$V0[1]*marxss.dims$V0[2],0,1))
