@@ -116,7 +116,7 @@ predict.marssMLE <- function (object, ..., n.ahead=1, t.start=NULL, newdata=list
         MLEobj.new.boot$marss$fixed$V0=array(vec(kf$V0T), dim=c(model.dims$V0[1]*model.dims$V0[2],1,1))
       }else{
         MLEobj.new.boot$marss$fixed$x0=array(kf$xtT[,t.start-1], dim=model.dims$x0)
-        MLEobj.new.boot$marss$fixed$V0=array(vec(kf$VtT[,,t=(t.start-1)]), dim=c(model.dims$V0[1]*model.dims$V0[2],1,1))
+        MLEobj.new.boot$marss$fixed$V0=array(vec(as.matrix(kf$VtT[,,t=(t.start-1)])), dim=c(model.dims$V0[1]*model.dims$V0[2],1,1))
       }
       
       states.boot[,,i]=MARSSkf(MLEobj.new.boot)$xtT
